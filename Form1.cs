@@ -33,18 +33,18 @@ namespace QuanLyKhoaApp
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                txtMaKhoa.Text = selectedRow.Cells["MaKhoa"].Value.ToString();
-                txtTenKhoa.Text = selectedRow.Cells["TenKhoa"].Value.ToString();
+                txtMaKhoa.Text = selectedRow.Cells["MaSanPham"].Value.ToString();
+                txtTenKhoa.Text = selectedRow.Cells["TenSanPham"].Value.ToString();
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string maKhoa = txtMaKhoa.Text;
-            string tenKhoa = txtTenKhoa.Text;
+            string masanpham = txtMaKhoa.Text;
+            string tensanpham = txtTenKhoa.Text;
 
             // Kiểm tra dữ liệu đầu vào
-            if (string.IsNullOrWhiteSpace(maKhoa) || string.IsNullOrWhiteSpace(tenKhoa))
+            if (string.IsNullOrWhiteSpace(masanpham) || string.IsNullOrWhiteSpace(tensanpham))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
                 return;
@@ -58,8 +58,8 @@ namespace QuanLyKhoaApp
                     string query = "INSERT INTO Khoa (MaKhoa, TenKhoa) VALUES (@MaKhoa, @TenKhoa)";
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MaKhoa", maKhoa);
-                        cmd.Parameters.AddWithValue("@TenKhoa", tenKhoa);
+                        cmd.Parameters.AddWithValue("@MaKhoa", masanpham);
+                        cmd.Parameters.AddWithValue("@TenKhoa", tensanpham);
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
@@ -127,6 +127,31 @@ namespace QuanLyKhoaApp
         }
 
         private void txtMaKhoa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormQuanLyKhoa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
